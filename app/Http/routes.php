@@ -11,6 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'AppController@home');
+
+// App installation
+Route::get('/install', 'AppController@install');
+Route::get('/uninstall', 'AppController@uninstall');
+Route::get('/cancel', 'AppController@cancel');
+
+// Integration with SEOshop
+Route::post('/shipment_methods', 'ShipmentsController@index');
+
+// Authenticated routes
+Route::group(['middleware' => ['auth']], function()
+{
+    Route::get('/dashboard', 'AppController@dashboard');
 });

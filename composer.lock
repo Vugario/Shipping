@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d86063e8a2cd93e29c8bda8f2b310066",
+    "hash": "76d948969d99c449602478b61f822b96",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -895,6 +895,51 @@
                 "shell"
             ],
             "time": "2015-03-26 18:43:54"
+        },
+        {
+            "name": "seoshop/seoshop-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SEOshop/API-PHP-Client.git",
+                "reference": "15f213a4082b6bbefc803217c537d99c55e4e0ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SEOshop/API-PHP-Client/zipball/15f213a4082b6bbefc803217c537d99c55e4e0ac",
+                "reference": "15f213a4082b6bbefc803217c537d99c55e4e0ac",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/WebshopappApiClient.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "SEOshop and contributors",
+                    "homepage": "https://github.com/SEOshop/API-PHP-Client/contributors"
+                }
+            ],
+            "description": "PHP client for the SEOshop API",
+            "homepage": "http://developers.seoshop.com",
+            "keywords": [
+                "api",
+                "client",
+                "php"
+            ],
+            "time": "2015-06-05 10:21:20"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2982,7 +3027,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "seoshop/seoshop-php": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

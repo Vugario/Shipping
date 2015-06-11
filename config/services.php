@@ -14,6 +14,12 @@ return [
     |
     */
 
+    'seoshop' => [
+        'env'    => env('SEOSHOP_ENV', 'live'),
+        'key'    => env('SEOSHOP_KEY', false),
+        'secret' => env('SEOSHOP_SECRET', false)
+    ],
+
     'mailgun' => [
         'domain' => '',
         'secret' => '',
@@ -27,12 +33,6 @@ return [
         'key' => '',
         'secret' => '',
         'region' => 'us-east-1',
-    ],
-
-    'stripe' => [
-        'model'  => App\User::class,
-        'key' => '',
-        'secret' => '',
     ],
 
 ];

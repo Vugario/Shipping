@@ -1,0 +1,75 @@
+// Color swatches
+$waterfall: #2BCDFC;
+$waterfallLite: #E9FAFE;
+$waterfallDark: #2775C6;
+
+$houseboat: #34495E;
+$houseboatLite: #425B75;
+$houseboatDark: #263544;
+
+$mussel: #494C4C;
+$musselLite: #ABB3B3;
+$musselDark: #181A1A;
+// DEPRECATED: Use $musselLite instead
+$musselLight: $musselLite;
+$musselMedium: mix($mussel, $musselLight, 50%);
+
+$lotus: #FFFFFF;
+$lotusLite: #F9F9F9;
+$lotusDark: #C4CACC;
+$lotusMedium: rgba($lotusDark, .5);
+
+$moss: #62DE83;
+$mossLite: #E0F8E6;
+$mossDark: #3DD164;
+
+$ginger: #FC7272;
+$gingerLite: #FEE3E3;
+$gingerDark: #E34F4F;
+
+$sandpit: #E5D185;
+$sandpitLite: #F8EEC8;
+
+$moses: #E1E4E5;
+$mosesLite: #FCFCFC;
+
+$premiumOrange: #F39C12;
+
+// Scope based colors
+$successColor: $moss;
+$dangerColor: $ginger;
+$warningColor: $sandpit;
+
+// Alerts
+$successBorderColor: #9ECE89;
+$successBackgroundColor: #D9F6CE;
+$successTextColor: mix($successBackgroundColor, $mussel, 20%);
+
+$infoBorderColor: #CACACA;
+$infoBackgroundColor: #EFEFEF;
+$infoTextColor: mix($successBackgroundColor, $mussel, 20%);
+
+$dangerBorderColor: #EB8680;
+$dangerBackgroundColor: #F5CFCD;
+$dangerTextColor: mix($dangerBorderColor, $mussel, 20%);
+
+$warningBorderColor: #E5D185;
+$warningBackgroundColor: #F8EEC8;
+$warningTextColor: mix($warningBackgroundColor, $mussel, 20%);
+
+// Misc
+$backgroundColor: $lotusLite;
+$dockColor: #263545;
+$sidebarColor: #f1f4f5;
+$linkColor: $waterfall;
+
+// Borders and lines
+$borderColor: $lotusDark;
+$borderColorLight: mix($borderColor, $lotus, 80%);
+$dividerColor: mix($borderColor, $lotus, 50%);
+
+// Item colors
+$panelBackgroundColor: $houseboat;
+$dockColor: #263545;
+$sidebarColor: #f1f4f5;
+$linkColor: $waterfall;
