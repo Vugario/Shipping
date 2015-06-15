@@ -1,0 +1,36 @@
+#app {
+  max-width: 750px; }
+  #app > header {
+    margin: 20px 0; }
+    #app > header > nav {
+      margin-top: 12px; }
+      #app > header > nav ul.nav li a {
+        color: #ABB3B3; }
+        #app > header > nav ul.nav li a:hover {
+          background-color: transparent;
+          color: #494C4C; }
+      #app > header > nav ul.nav li.active a {
+        background-color: transparent;
+        color: #494C4C;
+        font-weight: bold; }
+
+body {
+  background-color: #F9F9F9;
+  color: #494C4C;
+  font-family: "proxima-nova", "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased; }
+
+a {
+  color: #2BCDFC; }
+  a:hover {
+    color: #494C4C; }
+
+.text-muted {
+  color: #ABB3B3; }
+
+.container {
+  max-width: 800px; }
+
+/*# sourceMappingURL=app.css.map */

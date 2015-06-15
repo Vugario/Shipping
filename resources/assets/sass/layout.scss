@@ -1,0 +1,32 @@
+#app {
+  max-width: 750px;
+
+  > header {
+    margin: 20px 0;
+
+    > nav {
+      margin-top: 12px;
+
+      ul.nav {
+        li {
+          a {
+            color: $musselLight;
+
+            &:hover {
+              background-color: transparent;
+              color: $mussel;
+            }
+          }
+
+          &.active {
+            a {
+              background-color: transparent;
+              color: $mussel;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+}

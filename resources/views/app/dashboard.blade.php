@@ -2,55 +2,49 @@
 
 @section('content')
 
-<div class="intro">
-    <p>Welcome to the External Services demo.</p>
-    <a href="{{ url('/') }}" target="_blank" class="btn btn-lg btn-default">Read documentation</a>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h4>Statistics</h4>
+                <p class="text-muted">Below you'll find statistics on how many requests I have handled.</p>
 
-    <div class="clearfix"></div>
+                <div class="wrapper">
+                    <canvas id="chart" width="100%" height="50"></canvas>
+                </div>
 
-    <a class="muted" href="#installed-services" style="display: inline-block;">See the installed services</a>
-    or
-    <a class="muted" href="#test-the-integration" style="display: inline-block;">test the integration</a>
+                <small class="text-center text-muted" style="display: block;">Number of shipments</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h4>Recent orders</h4>
+                <p class="text-muted">Below you'll find the most recent shipments.</p>
+
+                <table class="table">
+                    <tbody>
+                        @foreach ($orders as $order)
+                            <tr>
+                                <td width="60%">{{ str_limit($order['addressBillingName'], 20) }}</td>
+                                <td>{{ str_limit($order['addressShippingCity'], 20) }}</td>
+                                <td><a href="{{ url('orders', $order['id']) }}">View</a></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
-<hr style="margin-top: 0;" />
-
-<div class="section clearfix">
-    <h1 id="installed-services">The installed external services</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Type</th>
-                <th>Name</th>
-                <th>Endpoint</th>
-                <th>Active</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach ($external_services as $external_service)
-                <tr>
-                    <td>{{ $external_service['id'] }}</td>
-                    <td>{{ $external_service['type'] }}</td>
-                    <td>{{ $external_service['name'] }}</td>
-                    <td>{{ $external_service['urlEndpoint'] }}</td>
-                    <td>{{ $external_service['isActive'] }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
-
-<hr>
-
-<div class="section clearfix">
-    <img src="{{ asset('images/Bitmap2x.png') }}" width="271" alt="" class="pull-right">
-    
-    <h1 id="test-the-integration">Test the integration</h1>
-    <p>The external services were created. Now if you go to your shop and enter the checkout you'll see that there are shipping methods and payment methods that are fetched in realtime from this sample app. Given that this application runs in a publicly available HTTPS environment.</p>
-    <p><a href="http://{{ $shop['mainDomain'] }}/" target="_blank">Visit {{ $shop['mainDomain'] }}</a></p>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <a href="#" class="btn btn-default pull-right">Change configuration</a>
+        <span style="line-height: 34px;">You can change prices, shipping options and more in your configuration.</span>
+    </div>
 </div>
 
 @endsection()

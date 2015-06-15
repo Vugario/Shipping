@@ -25,6 +25,23 @@
 <body>
 
 <div id="app" class="container">
+    <header class="clearfix">
+        @if (Auth::check())
+            <nav class="pull-right">
+                <ul class="nav nav-pills">
+                    <li class="{{ Request::is('dashboard') ? 'active' : '' }}"><a href="{{ url('dashboard') }}">Dashboard</a></li>
+                    <li class="{{ Request::is('orders*') ? 'active' : '' }}"><a href="{{ url('orders') }}">Orders</a></li>
+                    <li class="{{ Request::is('configuration*') ? 'active' : '' }}"><a href="{{ url('configuration') }}">Configuration</a></li>
+                    <li><a href="{{ url('logout') }}">Log out</a></li>
+                </ul>
+            </nav>
+        @endif
+
+        <h3 class="pull-left"><a href="{{ url('dashboard') }}" class="text-muted">Shipping app</a></h3>
+    </header>
+
+    @include('flash::message')
+
     @yield('content')
 </div>
 

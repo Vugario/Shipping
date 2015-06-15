@@ -2,7 +2,7 @@
 @import "config/sizes";
 @import "config/typography";
 
-@import "screen";
+@import "layout";
 
 body {
   background-color: $backgroundColor;
@@ -11,7 +11,6 @@ body {
   font-size: $fontSize;
   line-height: $lineHeight;
   -webkit-font-smoothing: antialiased;
-  padding: 150px 0;
 }
 
 a {
@@ -20,6 +19,10 @@ a {
   &:hover {
     color: $mussel;
   }
+}
+
+.text-muted {
+  color: $musselLight;
 }
 
 .container {

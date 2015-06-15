@@ -18,6 +18,10 @@ Route::get('/install', 'AppController@install');
 Route::get('/uninstall', 'AppController@uninstall');
 Route::get('/cancel', 'AppController@cancel');
 
+// Orders
+Route::get('orders', 'OrdersController@index');
+Route::get('orders/{id}', 'OrdersController@show');
+
 // Integration with SEOshop
 Route::post('/shipment_methods', 'ShipmentsController@index');
 

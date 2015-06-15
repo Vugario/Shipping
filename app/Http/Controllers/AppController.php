@@ -28,12 +28,12 @@ class AppController extends Controller
      */
     public function dashboard()
     {
-        $externalServices = Webshop::instance()->external_services->get();
-        $shopInformation  = Webshop::instance()->shop->get();
+        $orders = Webshop::instance()->orders->get(null, [
+            'limit' => 5
+        ]);
 
         return view('app/dashboard', [
-            'shop'              => $shopInformation,
-            'external_services' => $externalServices
+            'orders' => $orders
         ]);
     }
 
@@ -67,8 +67,6 @@ class AppController extends Controller
             $signature .= $key . '=' . $value;
         }
 
-        echo $signature; exit;
-
         // The signature contains the app secret
         $signature = md5($signature . config('services.seoshop.secret'));
 
@@ -89,6 +87,9 @@ class AppController extends Controller
 
         // Create the external services
         Webshop::instance()->installExternalServices();
+
+        // Present the user with some feedback
+        flash()->success('The installation was successful. "Shipping app" is now integrated in your checkout.');
 
         // Were done here
         return redirect('dashboard');
