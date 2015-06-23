@@ -2,15 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\libraries\Webshop;
 use App\Shop;
+use App\Http\Requests;
+use App\Services\Contracts\WebshopServiceInterface;
+use App\Services\WebshopService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AppController extends Controller
 {
+    /**
+     * The WebshopService is a wrapper class to interface with the services of SEOshop
+     *
+     * @var WebshopService $webshopService
+     */
+    protected $webshopService;
+
+    /**
+     * The construct will receive the WebshopService through the service container
+     *
+     * @param WebshopServiceInterface $webshopService
+     */
+    public function __construct(WebshopServiceInterface $webshopService)
+    {
+        $this->webshopService = $webshopService;
+    }
+
     /**
      * The homepage of the application to explain its purpose
      *
@@ -28,9 +45,7 @@ class AppController extends Controller
      */
     public function dashboard()
     {
-        $orders = Webshop::instance()->orders->get(null, [
-            'limit' => 5
-        ]);
+        $orders = $this->webshopService->orders(5);
 
         return view('app/dashboard', [
             'orders' => $orders
@@ -85,8 +100,8 @@ class AppController extends Controller
         // Authenticate the user
         Auth::loginUsingId($shop->id);
 
-        // Create the external services
-        Webshop::instance()->installExternalServices();
+        // Install external services and webhooks
+        $this->webshopService->install();
 
         // Present the user with some feedback
         flash()->success('The installation was successful. "Shipping app" is now integrated in your checkout.');

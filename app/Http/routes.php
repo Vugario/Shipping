@@ -22,6 +22,9 @@ Route::get('/cancel', 'AppController@cancel');
 Route::get('orders', 'OrdersController@index');
 Route::get('orders/{id}', 'OrdersController@show');
 
+// Webhooks
+Route::controller('webhooks', 'WebhookController');
+
 // Integration with SEOshop
 Route::post('/shipment_methods', 'ShipmentsController@index');
 

@@ -17,7 +17,12 @@ return [
     'seoshop' => [
         'env'    => env('SEOSHOP_ENV', 'live'),
         'key'    => env('SEOSHOP_KEY', false),
-        'secret' => env('SEOSHOP_SECRET', false)
+        'secret' => env('SEOSHOP_SECRET', false),
+
+        'shipping' => [
+            'name'           => 'My Awesome Shipping Service',
+            'rateEstimation' => true
+        ]
     ],
 
     'mailgun' => [

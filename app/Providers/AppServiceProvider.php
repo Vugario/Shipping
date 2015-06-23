@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
+use App\Services\Contracts\WebshopServiceInterface;
+use App\Services\WebshopService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +26,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(WebshopServiceInterface::class, function($app)
+        {
+            $config = config('services.seoshop');
+
+            return new WebshopService(
+                new \WebshopappApiClient(
+                    $config['env'],
+                    $config['key'],
+                    md5(Auth::user()->token . $config['secret']),
+                    Auth::user()->language
+                )
+            );
+        });
     }
 }
