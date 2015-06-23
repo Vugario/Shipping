@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 
 class WebhookController extends Controller
 {
-    public function storeOrders(Request $request)
+    public function postOrders(Request $request)
     {
         Log::info('Webhook test');
         Log::info($request->input('order.id'));

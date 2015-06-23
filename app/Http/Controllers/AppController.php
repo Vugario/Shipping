@@ -106,7 +106,7 @@ class AppController extends Controller
 
     /**
      * Continue the installation process by installing external services and webhooks
-     * 
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function setup()
