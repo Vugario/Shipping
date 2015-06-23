@@ -29,19 +29,15 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(WebshopServiceInterface::class, function($app)
         {
             $config = config('services.seoshop');
-            $user   = Auth::user();
+            $userToken = (Auth::check()) ? Auth::user()->token : '';
+            $userLanguage = (Auth::check()) ? Auth::user()->language : 'EN';
 
-            if (!$user)
-            {
-                return false;
-            }
-            
             return new WebshopService(
                 new \WebshopappApiClient(
                     $config['env'],
                     $config['key'],
-                    md5(Auth::user()->token . $config['secret']),
-                    Auth::user()->language
+                    md5($userToken . $config['secret']),
+                    $userLanguage
                 )
             );
         });
