@@ -29,7 +29,13 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(WebshopServiceInterface::class, function($app)
         {
             $config = config('services.seoshop');
+            $user   = Auth::user();
 
+            if (!$user)
+            {
+                return false;
+            }
+            
             return new WebshopService(
                 new \WebshopappApiClient(
                     $config['env'],
