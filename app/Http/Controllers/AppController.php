@@ -100,6 +100,17 @@ class AppController extends Controller
         // Authenticate the user
         Auth::loginUsingId($shop->id);
 
+        // Enter the setup process
+        return redirect('setup');
+    }
+
+    /**
+     * Continue the installation process by installing external services and webhooks
+     * 
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function setup()
+    {
         // Install external services and webhooks
         $this->webshopService->install();
 
@@ -129,5 +140,16 @@ class AppController extends Controller
     public function cancel()
     {
         return view('app/cancel');
+    }
+
+    public function logout()
+    {
+        // Destroy the session and leave no trace!
+        Auth::logout();
+
+        // Feedback is always nice
+        flash()->success('You have been logged out.');
+
+        return redirect('/');
     }
 }

@@ -31,5 +31,7 @@ Route::post('/shipment_methods', 'ShipmentsController@index');
 // Authenticated routes
 Route::group(['middleware' => ['auth']], function()
 {
+    Route::get('/setup', 'AppController@setup');
     Route::get('/dashboard', 'AppController@dashboard');
+    Route::get('/logout', 'AppController@logout');
 });
