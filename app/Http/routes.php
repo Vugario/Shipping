@@ -19,8 +19,8 @@ Route::get('/uninstall', 'AppController@uninstall');
 Route::get('/cancel', 'AppController@cancel');
 
 // Orders
-Route::get('orders', 'OrdersController@index');
-Route::get('orders/{id}', 'OrdersController@show');
+Route::get('orders', 'OrderController@index');
+Route::get('orders/{id}', 'OrderController@show');
 
 // Webhooks
 Route::controller('webhooks', 'WebhookController');

@@ -24,17 +24,22 @@
                 <h4>Recent orders</h4>
                 <p class="text-muted">Below you'll find the most recent shipments.</p>
 
-                <table class="table">
-                    <tbody>
-                        @foreach ($orders as $order)
-                            <tr>
-                                <td width="60%">{{ str_limit($order['addressBillingName'], 20) }}</td>
-                                <td>{{ str_limit($order['addressShippingCity'], 20) }}</td>
-                                <td><a href="{{ url('orders', $order['id']) }}">View</a></td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                @if (count($orders) > 0)
+                    <table class="table">
+                        <tbody>
+                            @foreach ($orders as $order)
+                                <tr>
+                                    <td width="60%">{{ str_limit($order->customer_name, 20) }}</td>
+                                    <td>{{ str_limit($order->city, 20) }}</td>
+                                    <td><a href="{{ url('orders', $order->id) }}">View</a></td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @else
+                    <hr>
+                    <p class="text-muted">No orders have been placed yet using one of our shipment methods.</p>
+                @endif
             </div>
         </div>
     </div>

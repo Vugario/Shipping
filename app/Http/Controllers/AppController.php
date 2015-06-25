@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use App\Shop;
 use App\Http\Requests;
 use App\Services\Contracts\WebshopServiceInterface;
@@ -45,7 +46,9 @@ class AppController extends Controller
      */
     public function dashboard()
     {
-        $orders = $this->webshopService->orders(5);
+        $orders = Order::orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
 
         return view('app/dashboard', [
             'orders' => $orders

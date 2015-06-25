@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ShopsRememberMeToken extends Migration
+class OrderData extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class ShopsRememberMeToken extends Migration
      */
     public function up()
     {
-        Schema::table('shops', function($table)
+        Schema::table('orders', function($table)
         {
-            $table->string('remember_token')->nullable();
+            $table->json('data')->after('price');
         });
     }
 
@@ -25,9 +25,9 @@ class ShopsRememberMeToken extends Migration
      */
     public function down()
     {
-        Schema::table('shops', function($table)
+        Schema::table('orders', function($table)
         {
-            $table->dropColumn('remember_token');
+            $table->dropColumn('data');
         });
     }
 }

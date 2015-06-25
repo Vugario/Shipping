@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use App\Order;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\Libraries\Webshop;
 
-class OrdersController extends Controller
+class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Webshop::instance()->orders->get();
+        $orders = Order::all();
 
         return view('orders/index', compact('orders'));
     }
